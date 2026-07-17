@@ -7,11 +7,12 @@
 {% block extra_head %}
 <link rel="preload" as="image" href="{% static 'img/clubes/campus-hero.png' %}">
 <link rel="stylesheet" href="{% static 'css/pages/inicio.css' %}">
+<link rel="stylesheet" href="{% static 'css/inicio/shared_header.css' %}">
 {% endblock %}
 
 {% block body %}
 <a class="skip-link" href="#clubes">Ir al contenido principal</a>
-{% include "inicio/CLUBES/header.html" %}
+{% include "inicio/shared_header.html" %}
 
 <main>
     {% include "inicio/CLUBES/hero.html" %}

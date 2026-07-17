@@ -159,12 +159,11 @@ header {
     margin: 0 auto;
     height: 40px;
     padding: 0 1.2rem;
-    background: linear-gradient(180deg,
-    rgba(60,60,60,0.56) 0%,
-    rgba(32,32,32,0.44) 100%);
-    border: none; /* elimina el borde interno */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.45); /* solo sombra exterior suave */
-    backdrop-filter: blur(8px) saturate(1.05);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
     border-radius: 999px;
     z-index: 10;
 }
