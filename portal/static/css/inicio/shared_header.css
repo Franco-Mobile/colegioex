@@ -11,14 +11,63 @@
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    background: linear-gradient(135deg, rgba(0, 21, 85, 0.72) 0%, rgba(0, 10, 45, 0.55) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 8px 32px 0 rgba(0, 10, 45, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    
+    /* Liquid animated gradient background */
+    background: linear-gradient(-45deg, rgba(0, 15, 65, 0.76), rgba(0, 32, 105, 0.65), rgba(0, 8, 35, 0.8), rgba(0, 25, 80, 0.72));
+    background-size: 400% 400%;
+    animation: liquid-flow 15s ease infinite;
+    
+    /* Double highlight borders for glass refraction */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 12px 40px 0 rgba(0, 10, 45, 0.28),
+        inset 0 1.5px 0 0 rgba(255, 255, 255, 0.25),   /* top gloss border */
+        inset 0 -1.5px 0 0 rgba(0, 0, 0, 0.35),          /* bottom shadow border */
+        inset 0 12px 24px -10px rgba(255, 255, 255, 0.08); /* inner top glow */
+        
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
     border-radius: 999px;
     z-index: 10;
-    transition: all 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.contenedor-nav:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 16px 48px 0 rgba(0, 10, 45, 0.35),
+        inset 0 1.5px 0 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1.5px 0 0 rgba(0, 0, 0, 0.45),
+        inset 0 12px 24px -10px rgba(255, 255, 255, 0.12);
+}
+
+/* Diagonal glossy sweep overlay */
+.contenedor-nav::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: linear-gradient(120deg, 
+        rgba(255, 255, 255, 0) 30%, 
+        rgba(255, 255, 255, 0.12) 40%, 
+        rgba(255, 255, 255, 0.18) 45%, 
+        rgba(255, 255, 255, 0) 55%
+    );
+    background-size: 200% 100%;
+    background-position: -105% 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: background-position 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.contenedor-nav:hover::after {
+    background-position: 120% 0;
+}
+
+@keyframes liquid-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Nav links styling */
