@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Clubes Exitu's | Exitu's College{% endblock %}
+{% block meta_description %}Clubes Exitu's: espacios para descubrir talentos, crear, competir y crecer.{% endblock %}
+
+{% block extra_head %}
+<link rel="preload" as="image" href="{% static 'img/clubes/campus-hero.png' %}">
+<link rel="stylesheet" href="{% static 'css/pages/inicio.css' %}">
+{% endblock %}
+
+{% block body %}
+<a class="skip-link" href="#clubes">Ir al contenido principal</a>
+{% include "inicio/CLUBES/header.html" %}
+
+<main>
+    {% include "inicio/CLUBES/hero.html" %}
+    {% include "inicio/CLUBES/clubs.html" %}
+    {% include "inicio/CLUBES/club_directory.html" %}
+    {% include "inicio/CLUBES/experience.html" %}
+</main>
+
+{% include "inicio/CLUBES/modals.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="{% static 'js/pages/inicio.js' %}"></script>
+{% endblock %}
