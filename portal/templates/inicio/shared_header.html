@@ -1,77 +1,97 @@
 {% load static %}
-<header>
+<header class="site-header">
     <div class="contenedor-nav">
-        <!-- Menú izquierdo -->
-        <nav class="nav izquierdo" id="nav-izquierda" aria-label="Navegación principal izquierda">
-            <ul>
-                <li class="has-submenu">
-                    <a href="/#nosotros" aria-haspopup="true" aria-expanded="false">Nosotros</a>
-                    <ul class="submenu" aria-label="Submenú niveles">
-                        <li><a href="/#inicial">¿Quienes somos?</a></li>
-                        <li><a href="/#primaria">Misión, visión, valores</a></li>
-                        <li><a href="/#secundaria">Historia</a></li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="/#niveles" aria-haspopup="true" aria-expanded="false">Niveles Académicos</a>
-                    <ul class="submenu" aria-label="Submenú niveles">
-                        <li><a href="/#inicial">Inicial</a></li>
-                        <li><a href="/#primaria">Primaria</a></li>
-                        <li><a href="/#secundaria">Secundaria</a></li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="/#propuestaEducativa" aria-haspopup="true" aria-expanded="false">Propuesta educativa</a>
-                    <ul class="submenu" aria-label="Submenú niveles">
-                        <li><a href="/#inicial">Acompañamiento pedagógico</a></li>
-                        <li><a href="/#primaria">Idiomas</a></li>
-                        <li><a href="/#secundaria">Laboratorios</a></li>
-                        <li><a href="/#inicial">Talleres</a></li>
-                        <li><a href="/#primaria">Actividades extracurriculares</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Marca centrada -->
-        <a class="marca" href="/">
+        <!-- Logo para móviles -->
+        <a class="marca-mobile" href="/" aria-label="Volver al inicio">
             <img src="{% static 'img/escudo-amarillo.png' %}" alt="Logo Colegio Exitus">
         </a>
+        
+        <!-- Botón menú hamburguesa para móviles -->
+        <button class="menu-toggle js-menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú de navegación">
+            <span class="menu-toggle__text">Menú</span>
+            <span class="menu-toggle__icon">
+                <i></i>
+                <i></i>
+            </span>
+        </button>
 
-        <!-- Menú derecho -->
+        <!-- Navegación Principal (responsiva) -->
+        <nav class="main-nav js-main-nav" id="main-nav" aria-label="Navegación principal">
+            <!-- Menú izquierdo -->
+            <div class="nav-group nav-group--left nav izquierdo">
+                <ul>
+                    <li class="has-submenu">
+                        <a href="/#nosotros" aria-haspopup="true" aria-expanded="false">Nosotros</a>
+                        <ul class="submenu" aria-label="Submenú niveles">
+                            <li><a href="/#inicial">¿Quienes somos?</a></li>
+                            <li><a href="/#primaria">Misión, visión, valores</a></li>
+                            <li><a href="/#secundaria">Historia</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="/#niveles" aria-haspopup="true" aria-expanded="false">Niveles Académicos</a>
+                        <ul class="submenu" aria-label="Submenú niveles">
+                            <li><a href="/#inicial">Inicial</a></li>
+                            <li><a href="/#primaria">Primaria</a></li>
+                            <li><a href="/#secundaria">Secundaria</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="/#propuestaEducativa" aria-haspopup="true" aria-expanded="false">Propuesta educativa</a>
+                        <ul class="submenu" aria-label="Submenú niveles">
+                            <li><a href="/#inicial">Acompañamiento pedagógico</a></li>
+                            <li><a href="/#primaria">Idiomas</a></li>
+                            <li><a href="/#secundaria">Laboratorios</a></li>
+                            <li><a href="/#inicial">Talleres</a></li>
+                            <li><a href="/#primaria">Actividades extracurriculares</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-        <nav class="nav derecha" id="nav-derecha" aria-label="Navegación principal derecha">
-            <ul>
-                <li class="has-submenu">
-                    <a href="/#servicios" aria-haspopup="true" aria-expanded="false">Servicios</a>
-                    <ul class="submenu" aria-label="Submenú servicios">
-                        <li><a href="/#biblioteca">Psicopedagogía/Tutoría</a></li>
-                        <li><a href="/#laboratorios">Biblioteca</a></li>
-                        <li><a href="/#transporte">Trámites</a></li>
-                        <li><a href="/#transporte">Plataforma virtual</a></li>
-                        <li><a href="/#transporte">Comedor</a></li>
-                        <li><a href="{% url 'clubes' %}">Clubes deportivos</a></li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="/#noticias" aria-haspopup="true" aria-expanded="false">Vida escolar</a>
-                    <ul class="submenu" aria-label="Submenú noticias">
-                        <li><a href="/#eventos">Noticias/Comunicados</a></li>
-                        <li><a href="/#comunicados">Eventos</a></li>
-                        <li><a href="/#comunicados">Logros y reconocimientos</a></li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="/#contactanos" aria-haspopup="true" aria-expanded="false">Contactanos</a>
-                    <ul class="submenu" aria-label="Submenú exinet">
-                        <li><a href="/#plataforma">Formulario</a></li>
-                        <li><a href="/#soporte">Directorio</a></li>
-                        <li><a href="/#soporte">Horarios de atención</a></li>
-                        <li><a href="/#soporte">Ubicación</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <!-- Marca centrada (Escudo grande para escritorio) -->
+            <a class="marca" href="/">
+                <img src="{% static 'img/escudo-amarillo.png' %}" alt="Logo Colegio Exitus">
+            </a>
+
+            <!-- Menú derecho -->
+            <div class="nav-group nav-group--right nav derecha">
+                <ul>
+                    <li class="has-submenu">
+                        <a href="/#servicios" aria-haspopup="true" aria-expanded="false">Servicios</a>
+                        <ul class="submenu" aria-label="Submenú servicios">
+                            <li><a href="/#biblioteca">Psicopedagogía/Tutoría</a></li>
+                            <li><a href="/#laboratorios">Biblioteca</a></li>
+                            <li><a href="/#transporte">Trámites</a></li>
+                            <li><a href="/#transporte">Plataforma virtual</a></li>
+                            <li><a href="/#transporte">Comedor</a></li>
+                            <li><a href="{% url 'clubes' %}">Clubes deportivos</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="/#noticias" aria-haspopup="true" aria-expanded="false">Vida escolar</a>
+                        <ul class="submenu" aria-label="Submenú noticias">
+                            <li><a href="/#eventos">Noticias/Comunicados</a></li>
+                            <li><a href="/#comunicados">Eventos</a></li>
+                            <li><a href="/#comunicados">Logros y reconocimientos</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="/#contactanos" aria-haspopup="true" aria-expanded="false">Contactanos</a>
+                        <ul class="submenu" aria-label="Submenú exinet">
+                            <li><a href="/#plataforma">Formulario</a></li>
+                            <li><a href="/#soporte">Directorio</a></li>
+                            <li><a href="/#soporte">Horarios de atención</a></li>
+                            <li><a href="/#soporte">Ubicación</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Botón CTA móvil (dentro del menú hamburguesa) -->
+            <a href="/#admision" class="cta cta-mobile-only" aria-label="Ir a Admisión">Admisión</a>
         </nav>
     </div>
+    <!-- Botón CTA escritorio (fijo a la derecha) -->
     <a href="/#admision" class="cta cta-top-right" aria-label="Ir a Admisión">Admisión</a>
 </header>

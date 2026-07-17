@@ -2,7 +2,8 @@ from django.views.generic import TemplateView
 from portal.data import FEATURED_CLUBS
 
 class Inicio(TemplateView):
-    template_name = "inicio/inicio.html"
+    template_name = "inicio/clubes.html"
+    extra_context = {"featured_clubs": FEATURED_CLUBS}
 
 class Nosotros(TemplateView):
     template_name = "inicio/nosotros.html"
