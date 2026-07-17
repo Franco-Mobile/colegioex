@@ -1,29 +1,458 @@
-{% extends "layouts/base.html" %}
 {% load static %}
+<!doctype html>
+<html lang="es">
 
-{% block title %}Clubes Exitu's | Exitu's College{% endblock %}
-{% block meta_description %}Clubes Exitu's: espacios para descubrir talentos, crear, competir y crecer.{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/inicio/inicio.css' %}">
+    <title>Exitu's College</title>
 
-{% block extra_head %}
-    <link rel="preload" as="image" href="{% static 'img/clubes/campus-hero.png' %}">
-    <link rel="stylesheet" href="{% static 'css/pages/inicio.css' %}">
-{% endblock %}
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="{% static 'favicons/favicon.png' %}">
 
-{% block body %}
-    <a class="skip-link" href="#clubes">Ir al contenido principal</a>
-    {% include "inicio/partials/header.html" %}
+</head>
+
+<body>
+    <div id="flyer-modal" class="flyer-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="flyer-backdrop" data-close></div>
+
+        <div class="flyer-card" role="document">
+            <button class="flyer-close" aria-label="Cerrar anuncio" title="Cerrar">✕</button>
+            <img class="flyer-img" src="/static/img/flyerModal.jpg" alt="Flyer promocional">
+        </div>
+    </div>
+    <div class="contenedor-video" aria-hidden="true">
+        <video id="bg-video" autoplay muted loop playsinline preload="auto" poster="{% static 'img/poster.jpg' %}">
+            <source src="{% static 'video/VIDEOPAGINAWEB.mp4' %}" type="video/mp4">
+        </video>
+
+        <div class="video-overlay" role="region" aria-label="Mensaje sobre video">
+            <div class="badge matriculas" role="note" aria-label="Matrículas abiertas 2025">
+                <span class="dot" aria-hidden="true"></span>
+                <span class="text">MATRÍCULAS ABIERTAS 2026</span>
+            </div>
+            <p class="overlay-text">Bienvenidos</p>
+            <p class="overlay-text text2">Exitu's College</p>
+        </div>
+    </div>
+
+    <header>
+        <div class="contenedor-nav">
+            <!-- Menú izquierdo -->
+            <nav class="nav izquierdo" id="nav-izquierda" aria-label="Navegación principal izquierda">
+                <ul>
+                    <li class="has-submenu">
+                        <a href="#nosotros" aria-haspopup="true" aria-expanded="false">Nosotros</a>
+                        <ul class="submenu" aria-label="Submenú niveles">
+                            <li><a href="#inicial">¿Quienes somos?</a></li>
+                            <li><a href="#primaria">Misión, visión, valores</a></li>
+                            <li><a href="#secundaria">Historia</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#niveles" aria-haspopup="true" aria-expanded="false">Niveles Académicos</a>
+                        <ul class="submenu" aria-label="Submenú niveles">
+                            <li><a href="#inicial">Inicial</a></li>
+                            <li><a href="#primaria">Primaria</a></li>
+                            <li><a href="#secundaria">Secundaria</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#propuestaEducativa" aria-haspopup="true" aria-expanded="false">Propuesta educativa</a>
+                        <ul class="submenu" aria-label="Submenú niveles">
+                            <li><a href="#inicial">Acompañamiento pedagógico</a></li>
+                            <li><a href="#primaria">Idiomas</a></li>
+                            <li><a href="#secundaria">Laboratorios</a></li>
+                            <li><a href="#inicial">Talleres</a></li>
+                            <li><a href="#primaria">Actividades extracurriculares</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Marca centrada -->
+            <a class="marca" href="/">
+                <img src="{% static 'img/escudo-amarillo.png' %}" alt="Logo Colegio Exitus">
+            </a>
+
+            <!-- Menú derecho -->
+
+            <nav class="nav derecha" id="nav-derecha" aria-label="Navegación principal derecha">
+                <ul>
+                    <li class="has-submenu">
+                        <a href="#servicios" aria-haspopup="true" aria-expanded="false">Servicios</a>
+                        <ul class="submenu" aria-label="Submenú servicios">
+                            <li><a href="#biblioteca">Psicopedagogía/Tutoría</a></li>
+                            <li><a href="#laboratorios">Biblioteca</a></li>
+                            <li><a href="#transporte">Trámites</a></li>
+                            <li><a href="#transporte">Plataforma virtual</a></li>
+                            <li><a href="#transporte">Comedor</a></li>
+                            <li><a href="{% url 'clubes' %}">Clubes deportivos</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#noticias" aria-haspopup="true" aria-expanded="false">Vida escolar</a>
+                        <ul class="submenu" aria-label="Submenú noticias">
+                            <li><a href="#eventos">Noticias/Comunicados</a></li>
+                            <li><a href="#comunicados">Eventos</a></li>
+                            <li><a href="#comunicados">Logros y reconocimientos</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#contactanos" aria-haspopup="true" aria-expanded="false">Contactanos</a>
+                        <ul class="submenu" aria-label="Submenú exinet">
+                            <li><a href="#plataforma">Formulario</a></li>
+                            <li><a href="#soporte">Directorio</a></li>
+                            <li><a href="#soporte">Horarios de atención</a></li>
+                            <li><a href="#soporte">Ubicación</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <a href="#admision" class="cta cta-top-right" aria-label="Ir a Admisión">Admisión</a>
+    </header>
+
+    <div class="fixed-ui" aria-hidden="false">
+        <nav class="social-fixed" aria-label="Redes sociales">
+            <a class="social-btn" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+                <img src="{% static 'img/redes-sociales/facebook24px.png' %}">
+            </a>
+            <a class="social-btn" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+                <img src="{% static 'img/redes-sociales/instagram24px.png' %}">
+            </a>
+            <a class="social-btn" href="https://www.tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
+                <img src="{% static 'img/redes-sociales/tiktok24px.png' %}">
+            </a>
+            <a class="social-btn" href="https://wa.me/519xxxxxxxx" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <img src="{% static 'img/redes-sociales/whatsapp.png' %}" alt="Ícono de WhatsApp" />
+            </a>
+        </nav>
+
+        <a class="recorrido-btn" href="#recorrido360" role="button" aria-label="Recorrido 360 grados">
+            <span class="recorrido-text">Recorrido</span>
+            <span class="recorrido-icon" aria-hidden="true">
+                <img src="{% static 'img/360.png' %}" alt="Icono recorrido 360" />
+            </span>
+
+        </a>
+    </div>
 
     <main>
-        {% include "inicio/partials/hero.html" %}
-        {% include "inicio/partials/clubs.html" %}
-        {% include "inicio/partials/club_directory.html" %}
-        {% include "inicio/partials/experience.html" %}
+        <section id="propuesta-valor" class="propuesta-valor" aria-labelledby="pv-title">
+            <div class="pv-inner">
+                <p class="pv-label">NUESTRA PROPUESTA DE VALOR</p>
+                <h2 id="pv-title" class="pv-title">Perfil del Estudiante</h2>
+                <p class="pv-lead">Diseñamos una experiencia educativa que equilibra la excelencia académica con el
+                    desarrollo humano integral.</p>
+
+                <div class="pv-grid">
+                    <div class="pv-list pv-left" aria-hidden="false">
+                        <article class="pv-item">
+                            <div class="pv-icon">🎓</div>
+                            <div class="encabezado-pv-item">
+                                <h3>Exigencia Académica</h3>
+                                <p>Formación rigurosa que impulsa el máximo potencial intelectual y crítico.</p>
+                            </div>
+                        </article>
+
+                        <article class="pv-item">
+                            <div class="pv-icon">💻</div>
+                            <div class="encabezado-pv-item">
+                                <h3>Competencias Digitales</h3>
+                                <p>Dominio tecnológico avanzado para innovar y resolver desafíos modernos.</p>
+                            </div>
+                        </article>
+
+                        <article class="pv-item">
+                            <div class="pv-icon">💰</div>
+                            <div class="encabezado-pv-item">
+                                <h3>Educación Financiera</h3>
+                                <p>Gestión inteligente de recursos y conciencia económica temprana.</p>
+                            </div>
+                        </article>
+                    </div>
+
+
+                    <div class="hex-inner" role="img" aria-label="Hexágono central con perfil">
+                        <img src="{% static 'img/hexagonoperfil.png' %}" alt="Perfil del estudiante / silueta">
+                    </div>
+
+
+                    <div class="pv-list pv-right" aria-hidden="false">
+                        <article class="pv-item">
+                            <div class="pv-icon">⚖️</div>
+                            <div class="encabezado-pv-item">
+                                <h3>Ética</h3>
+                                <p>Principios sólidos de integridad y justicia para una ciudadanía responsable.</p>
+                            </div>
+                        </article>
+
+                        <article class="pv-item">
+                            <div class="pv-icon">🗣️</div>
+                            <div class="encabezado-pv-item">
+                                <h3>Formación en Idiomas</h3>
+                                <p>Competencia bilingüe para una comunicación global sin fronteras.</p>
+                            </div>
+                        </article>
+
+                        <article class="pv-item">
+                            <div class="pv-icon">🤝</div>
+                            <div class="encabezado-pv-item">
+                                <h3>Habilidades Blandas</h3>
+                                <p>Liderazgo, empatía y trabajo en equipo para el éxito personal.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="programas" class="programas-educativos" aria-labelledby="prog-title">
+            <div class="programas-inner">
+                <p class="sub-label">Caminos de aprendizaje</p>
+                <h2 id="prog-title">Niveles Académicos</h2>
+                <p class="prog-lead">Acompañamos a tu hijo en cada paso de su viaje, desde sus primeros descubrimientos
+                    hasta su graduación.</p>
+
+                <div class="programas-grid">
+                    <article class="programa-card">
+                        <div class="card-media">
+                            <img src="{% static 'img/inicial.png' %}" alt="Nivel Inicial">
+                            <span class="age-badge">3 - 5 Años</span>
+                            <button class="card-icon" aria-label="Más información">
+                                <img src="{% static 'img/inicial32px.png' %}" alt="">
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h3>Nivel Inicial</h3>
+                            <p>Un ambiente lúdico y seguro donde los más pequeños desarrollan su creatividad y
+                                habilidades sociales.</p>
+                            <a class="prog-link" href="#inicial">Explorar Nivel →</a>
+                        </div>
+                    </article>
+
+                    <article class="programa-card">
+                        <div class="card-media">
+                            <img src="{% static 'img/primaria.png' %}" alt="Nivel Primaria">
+                            <span class="age-badge blue">6 - 11 Años</span>
+                            <button class="card-icon" aria-label="Más información">
+                                <img src="{% static 'img/bookopen32px.png' %}" alt="">
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h3>Nivel Primaria</h3>
+                            <p>Construimos bases sólidas en conocimientos y habilidades, fomentando la curiosidad y el
+                                pensamiento crítico.</p>
+                            <a class="prog-link" href="#primaria">Explorar Nivel →</a>
+                        </div>
+                    </article>
+
+                    <article class="programa-card">
+                        <div class="card-media">
+                            <img src="{% static 'img/secundaria.png' %}" alt="Nivel Secundaria">
+                            <span class="age-badge green">12 - 16 Años</span>
+                            <button class="card-icon" aria-label="Más información">
+                                <img src="{% static 'img/lab-equipment32px.png' %}" alt="">
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <h3>Nivel Secundaria</h3>
+                            <p>Preparamos a los jóvenes para la educación superior y los desafíos del mundo moderno con
+                                rigor académico.</p>
+                            <a class="prog-link" href="#secundaria">Explorar Nivel →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="partners" class="partners" aria-labelledby="partners-title">
+            <div class="partners-inner">
+                <p class="sub-label">ALIANZAS ESTRATÉGICAS</p>
+                <div class="partners-grid">
+                    <h2 id="partners-title">Partners</h2>
+                    <span class="partners-grid-punto" aria-hidden="true"></span>
+                </div>
+
+                <p class="partners-lead">Una constelación de alianzas que conecta a nuestros estudiantes con la
+                    excelencia educativa y oportunidades globales.</p>
+
+                <div class="partners-layout">
+                    <!-- Constellation: logos posicionados absolutamente -->
+                    <div class="constellation" aria-hidden="false">
+                        <!-- cada botón es foco/hoverable para accesibilidad; usar imágenes en static/img/partners/ -->
+                        <button class="partner" data-title="Cambridge Assessment" data-sub="International Education"
+                            data-desc="Estándares educativos de clase mundial para preparar a nuestros alumnos."
+                            style="left:58%; top:36%;">
+                            <img src="{% static 'img/partners/cambridge.png' %}" alt="Cambridge Assessment">
+                        </button>
+
+                        <button class="partner" data-title="IB World School" data-sub="Programa IB"
+                            data-desc="Miembro de la comunidad IB, promoviendo pensamiento crítico global."
+                            style="left:42%; top:64%;">
+                            <img src="{% static 'img/partners/ib.png' %}" alt="IB World School">
+                        </button>
+
+                        <button class="partner" data-title="ICPNA" data-sub="Idiomas"
+                            data-desc="Alianza para fortalecer la enseñanza de idiomas." style="left:22%; top:28%;">
+                            <img src="{% static 'img/partners/icpna.png' %}" alt="ICPNA">
+                        </button>
+
+                        <button class="partner" data-title="UDEP" data-sub="Universidad"
+                            data-desc="Convenios académicos y articulaciones con la universidad."
+                            style="left:12%; top:66%;">
+                            <img src="{% static 'img/partners/udep.png' %}" alt="UDEP">
+                        </button>
+
+                        <button class="partner" data-title="Samikay" data-sub="Bienestar"
+                            data-desc="Programas de bienestar y actividades extracurriculares."
+                            style="left:78%; top:18%;">
+                            <img src="{% static 'img/partners/samikay.png' %}" alt="Samikay">
+                        </button>
+
+                        <button class="partner" data-title="IronLion" data-sub="Deportes"
+                            data-desc="Colaboración en desarrollo deportivo y liderazgo." style="left:82%; top:58%;">
+                            <img src="{% static 'img/partners/ironlion.png' %}" alt="IronLion">
+                        </button>
+
+                        <button class="partner" data-title="Kumazawa" data-sub="Cultura"
+                            data-desc="Proyectos culturales y artísticos compartidos." style="left:30%; top:48%;">
+                            <img src="{% static 'img/partners/kumazawa.png' %}" alt="Kumazawa">
+                        </button>
+
+                        <button class="partner" data-title="Cámara de Comercio" data-sub="Vinculación"
+                            data-desc="Alianzas institucionales con el sector productivo." style="left:54%; top:78%;">
+                            <img src="{% static 'img/partners/camaracomercio.png' %}" alt="Cámara de Comercio">
+                        </button>
+
+                        <!-- añadir más partners según sea necesario -->
+                    </div>
+
+                    <!-- Panel de información que aparece al hacer hover/focus -->
+                    <aside class="partners-info" aria-live="polite" aria-hidden="true">
+                        <button class="info-close" aria-label="Cerrar información">✕</button>
+                        <div class="info-content">
+                            <h3 class="info-title"></h3>
+                            <p class="info-sub"></p>
+                            <p class="info-desc"></p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta-hero" class="cta-hero" aria-labelledby="cta-title" role="region">
+            <div class="cta-inner">
+                <div class="cta-copy" aria-hidden="false">
+                    <span class="cta-badge" aria-hidden="true">ADMISIÓN 2025</span>
+                    <h2 id="cta-title" class="cta-title">
+                        <span class="cta-accent">Descubre tu Potencial.</span><br>
+                        <span class="cta-strong">Únete a la Familia.</span>
+                    </h2>
+                    <p class="cta-lead">El futuro comienza con una decisión. Da el primer paso hacia una educación de
+                        excelencia.</p>
+                </div>
+
+                <div class="cta-actions" role="group" aria-label="Acciones de admisión">
+                    <a class="hero-cta-btn" href="#admision" role="button">Iniciar Proceso de Admisión →</a>
+                    <a class="hero-cta-secondary" href="#contacto" role="button">Agendar una Visita Personalizada</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    {{ featured_clubs|json_script:"club-catalog" }}
-    {% include "inicio/partials/modals.html" %}
-{% endblock %}
+    <footer class="site-footer" role="contentinfo" aria-label="Pie de página">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand" aria-hidden="false">
+                <img class="footer-logo" src="{% static 'img/escudo-amarillo.png' %}" alt="Logo Colegio Exitus">
+                <p class="footer-desc">
+                    Comprometidos con la formación de líderes del mañana, fomentando la excelencia académica,
+                    el pensamiento crítico y los valores humanos en un ambiente innovador y de apoyo.
+                </p>
+            </div>
 
-{% block scripts %}
-    <script type="module" src="{% static 'js/pages/inicio.js' %}"></script>
-{% endblock %}
+            <nav class="footer-col footer-links" aria-label="Enlaces importantes">
+                <h4>Enlaces</h4>
+                <ul>
+                    <li><a href="#admision">Admisión</a></li>
+                    <li><a href="#niveles">Niveles Académicos</a></li>
+                    <li><a href="#propuesta-valor">Propuesta de Valor</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#noticias">Noticias</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-col footer-contact" aria-label="Contáctanos">
+                <h4>Contáctanos</h4>
+                <ul class="contact-list" role="list">
+                    <li>
+                        <span class="icon" aria-hidden="true">
+                            <!-- envelope SVG -->
+                            <svg width="16" height="12" viewBox="0 0 20 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 2h18v10H1z" stroke="currentColor" stroke-width="1.2"
+                                    stroke-linejoin="round" />
+                                <path d="M1 2l9 6 9-6" stroke="currentColor" stroke-width="1.2"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <a href="mailto:info@colegioexitus.edu.pe">info@colegioexitus.edu.pe</a>
+                    </li>
+                    <li>
+                        <span class="icon" aria-hidden="true">
+                            <!-- phone SVG -->
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.09 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.12 1.05.38 2.07.75 3.03a2 2 0 0 1-.45 2.11l-1.27 1.27a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.96.37 1.98.63 3.03.75A2 2 0 0 1 22 16.92z"
+                                    stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <a href="tel:+51973123456">(+51) 973 123 456</a>
+                    </li>
+                    <li>
+                        <span class="icon" aria-hidden="true">
+                            <!-- clock SVG -->
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2" />
+                                <path d="M12 7v6l4 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        Horario: Lunes a Viernes: 8:00am - 4:00pm
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-map" aria-hidden="false">
+                <!-- Mapa en columna propia -->
+                <div class="map-wrapper" aria-label="Mapa ubicación Colegio Exitus">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.0000000000005!2d-80.00000000000001!3d-5.000000000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z5Y2X!5e0!3m2!1ses!2spe!4v0000000000000"
+                        width="280" height="140" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" title="Mapa ubicación Colegio Exitus">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom" role="note">
+            <p>&copy; 2026 Colegio Exitus. Todos los derechos reservados por Por Carmen Company®</p>
+            <nav class="footer-legal" aria-label="Enlaces legales">
+                <a href="#privacidad">Política de Privacidad</a>
+                <a href="#terminos">Términos de Uso</a>
+                <a href="#reclamos">Libro de Reclamos</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/inicio/anuncioModal.js' %}"></script>
+    <script src="{% static 'js/inicio/partnersConstelacion.js' %}"></script>
+</body>
+
+</html>

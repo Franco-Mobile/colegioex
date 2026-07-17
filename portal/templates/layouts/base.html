@@ -3,15 +3,18 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{% block meta_description %}Exitu's College{% endblock %}">
-    <meta name="theme-color" content="#051c3e">
-    <link rel="icon" type="image/png" href="{% static 'favicons/favicon.png' %}">
-    {% block extra_head %}{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Exitu's College{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    
+    <link rel="icon" type="image/png" href="{% static 'favicons/favicon.png' %}">
+    
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
     {% block body %}{% endblock %}
+    
     {% block scripts %}{% endblock %}
 </body>
 </html>

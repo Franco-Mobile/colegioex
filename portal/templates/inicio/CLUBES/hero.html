@@ -1,0 +1,15 @@
+{% load static %}
+<section class="hero" id="inicio" aria-labelledby="hero-title">
+    <img class="hero__image" src="{% static 'img/clubes/campus-hero.png' %}" alt="Vista aérea del campus de Exitu's College" fetchpriority="high" decoding="async">
+    <div class="hero__veil"></div>
+    <div class="hero__content">
+        <p class="eyebrow eyebrow--light">Conoce nuestra casa</p>
+        <h1 class="sr-only" id="hero-title">Exitu's College</h1>
+        <button class="play-button js-open-video" type="button" aria-label="Reproducir video institucional">
+            <span class="play-button__icon" aria-hidden="true"></span>
+            <span>Ver video institucional</span>
+        </button>
+    </div>
+    <a class="scroll-cue" href="#clubes" aria-label="Bajar a la sección de clubes"><span></span></a>
+    <div class="hero__wave" aria-hidden="true"></div>
+</section>

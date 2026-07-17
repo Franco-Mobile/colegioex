@@ -1,0 +1,34 @@
+{% load static %}
+<dialog class="modal video-modal" id="video-modal" aria-labelledby="video-modal-title">
+    <button class="modal__close js-close-modal" type="button" aria-label="Cerrar">×</button>
+    <div class="video-modal__stage">
+        <img src="{% static 'img/clubes/campus-hero.png' %}" alt="Campus Exitu's College">
+        <span class="video-modal__play" aria-hidden="true">▶</span>
+    </div>
+    <div class="modal__body">
+        <span class="section-kicker">Exitu's College</span>
+        <h2 id="video-modal-title">Una comunidad para crecer</h2>
+        <p>Muy pronto podrás ver aquí nuestro recorrido institucional completo.</p>
+    </div>
+</dialog>
+
+<dialog class="modal clubs-modal" id="clubs-modal" aria-labelledby="clubs-modal-title">
+    <button class="modal__close js-close-modal" type="button" aria-label="Cerrar">×</button>
+    <div class="modal__body">
+        <span class="section-kicker">Explora y elige</span>
+        <h2 id="clubs-modal-title">Clubes Exitu's</h2>
+        <p class="clubs-modal__lead">Cada club es un espacio para experimentar, aprender con otros y convertir una curiosidad en talento.</p>
+        <div class="clubs-modal__grid" id="clubs-modal-grid"></div>
+    </div>
+</dialog>
+
+<dialog class="modal detail-modal" id="detail-modal" aria-labelledby="detail-title">
+    <button class="modal__close js-close-modal" type="button" aria-label="Cerrar">×</button>
+    <div class="modal__body">
+        <span class="detail-modal__icon" id="detail-icon" aria-hidden="true">✦</span>
+        <span class="section-kicker">Club Exitu's</span>
+        <h2 id="detail-title">Ajedrez</h2>
+        <p id="detail-description"></p>
+        <a class="modal__cta" href="mailto:admision@exitus.edu.pe">Quiero más información <span aria-hidden="true">→</span></a>
+    </div>
+</dialog>
