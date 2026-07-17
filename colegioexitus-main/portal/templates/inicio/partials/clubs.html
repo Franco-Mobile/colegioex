@@ -15,46 +15,8 @@
             <button class="text-button js-open-clubs" type="button">Ver todos los clubes <span aria-hidden="true">→</span></button>
         </header>
 
-        <article class="club-feature club-feature--chess reveal" data-club="Ajedrez">
-            <div class="club-copy">
-                <span class="club-number">01</span>
-                <span class="club-line" aria-hidden="true"></span>
-                <h3>Ajedrez</h3>
-                <p>Estrategia, concentración y visión. Cada movimiento te acerca a la victoria.</p>
-                <button class="club-link js-club-detail" type="button">Ver más <span aria-hidden="true">→</span></button>
-            </div>
-            <div class="club-visual club-visual--amber">
-                <img src="{% static 'img/clubes/ajedrez.png' %}" alt="Tablero de ajedrez en una partida" loading="lazy" decoding="async">
-                <button class="visual-plus js-club-detail" type="button" aria-label="Conocer el club de ajedrez">+</button>
-            </div>
-        </article>
-
-        <article class="club-feature club-feature--reverse club-feature--karate reveal" data-club="Karate">
-            <div class="club-copy">
-                <span class="club-number">02</span>
-                <span class="club-line" aria-hidden="true"></span>
-                <h3>Karate</h3>
-                <p>Disciplina, respeto y superación. Formamos cuerpo, mente y espíritu.</p>
-                <button class="club-link js-club-detail" type="button">Ver más <span aria-hidden="true">→</span></button>
-            </div>
-            <div class="club-visual club-visual--aqua">
-                <img src="{% static 'img/clubes/karate.png' %}" alt="Dos figuras practicando karate" loading="lazy" decoding="async">
-                <button class="visual-plus js-club-detail" type="button" aria-label="Conocer el club de karate">+</button>
-            </div>
-        </article>
-
-        <article class="club-feature club-feature--swim reveal" data-club="Natación">
-            <div class="club-copy">
-                <span class="club-number">03</span>
-                <span class="club-line" aria-hidden="true"></span>
-                <h3>Natación</h3>
-                <p>Fuerza, técnica y resiliencia. Nadamos hacia nuevas metas.</p>
-                <button class="club-link js-club-detail" type="button">Ver más <span aria-hidden="true">→</span></button>
-            </div>
-            <div class="club-visual club-visual--blue">
-                <img src="{% static 'img/clubes/natacion.png' %}" alt="Nadador avanzando entre olas de agua" loading="lazy" decoding="async">
-                <button class="visual-plus js-club-detail" type="button" aria-label="Conocer el club de natación">+</button>
-            </div>
-        </article>
+        {% for club in featured_clubs %}
+            {% include "inicio/partials/club_feature.html" with club=club only %}
+        {% endfor %}
     </div>
 </section>

@@ -20,6 +20,7 @@
         {% include "inicio/partials/experience.html" %}
     </main>
 
+    {{ featured_clubs|json_script:"club-catalog" }}
     {% include "inicio/partials/modals.html" %}
 {% endblock %}
 
