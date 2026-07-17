@@ -1,0 +1,105 @@
+@media (max-width: 640px) {
+    :root {
+        --container: min(100% - 28px, 540px);
+    }
+
+    .hero {
+        min-height: 540px;
+        height: 78svh;
+    }
+
+    .hero__wave {
+        bottom: -56px;
+        height: 100px;
+    }
+
+    .scroll-cue { bottom: 34px; }
+    .clubs { padding-top: 52px; }
+    .clubs-intro { margin-bottom: 55px; }
+
+    .clubs-intro h2 {
+        font-size: clamp(3rem, 17vw, 4.7rem);
+    }
+
+    .club-feature,
+    .club-feature--reverse {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 75px;
+        padding-top: 0;
+    }
+
+    .club-copy,
+    .club-feature--reverse .club-copy {
+        order: 1;
+        max-width: 330px;
+        padding-left: 10px;
+    }
+
+    .club-feature--reverse .club-copy {
+        margin-left: auto;
+    }
+
+    .club-visual,
+    .club-feature--reverse .club-visual {
+        order: 2;
+        width: calc(100% + 10px);
+        height: clamp(230px, 67vw, 350px);
+        margin-left: -5px;
+    }
+
+    .club-visual::before,
+    .club-feature:nth-of-type(3n + 2) .club-visual::before,
+    .club-feature:nth-of-type(3n) .club-visual::before {
+        inset: 18px -15px 4px;
+    }
+
+    .visual-plus {
+        right: 0;
+        bottom: 28px;
+    }
+
+    .social-rail {
+        position: absolute;
+        top: 55px;
+        right: 10px;
+        transform: none;
+    }
+
+    .all-clubs { padding: 70px 0 100px; }
+
+    .club-icon-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 14px;
+    }
+
+    .mini-club__icon {
+        width: 76px;
+        height: 65px;
+        font-size: 3.25rem;
+    }
+
+    .experience { min-height: 450px; }
+    .experience__backdrop { background-position: 64% center; }
+
+    .experience__backdrop::after {
+        background: linear-gradient(90deg, rgba(2, 19, 45, .95), rgba(3, 24, 54, .65));
+    }
+
+    .contact-strip {
+        flex-direction: column;
+        gap: 9px;
+        padding-block: 28px;
+        text-align: center;
+    }
+
+    .clubs-modal__grid { grid-template-columns: repeat(2, 1fr); }
+    .modal__body { padding: 29px 22px 32px; }
+    .video-modal__stage { height: 220px; }
+}
+
+@media (max-width: 380px) {
+    .menu-toggle__label { display: none; }
+    .clubs-modal__grid { grid-template-columns: 1fr; }
+}

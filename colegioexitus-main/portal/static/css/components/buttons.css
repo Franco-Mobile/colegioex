@@ -1,0 +1,82 @@
+.text-button,
+.outline-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    min-height: 46px;
+    padding: 0 17px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    color: var(--ink);
+    font-size: .78rem;
+    font-weight: 750;
+    cursor: pointer;
+    transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.text-button span,
+.outline-button span {
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: var(--white);
+    background: var(--navy-900);
+}
+
+.text-button:hover,
+.outline-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(5, 28, 62, .15);
+}
+
+.outline-button {
+    border: 1px solid #edf0f4;
+}
+
+.club-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    color: var(--blue);
+    background: transparent;
+    font-size: .76rem;
+    font-weight: 750;
+    cursor: pointer;
+    transition: gap .2s ease, border-color .2s ease;
+}
+
+.club-link:hover {
+    gap: 18px;
+    border-color: currentColor;
+}
+
+.visual-plus {
+    position: absolute;
+    right: -16px;
+    bottom: 64px;
+    display: grid;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+    border: 5px solid var(--white);
+    border-radius: 50%;
+    color: var(--white);
+    background: var(--feature-color, var(--amber));
+    box-shadow: var(--shadow-sm);
+    font-size: 1.55rem;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform .25s ease;
+}
+
+.visual-plus:hover {
+    transform: rotate(90deg) scale(1.08);
+}

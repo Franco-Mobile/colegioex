@@ -1,0 +1,18 @@
+<section class="all-clubs" id="vida-escolar" aria-labelledby="all-clubs-title">
+    <div class="all-clubs__wave" aria-hidden="true"></div>
+    <div class="all-clubs__inner">
+        <h2 class="sr-only" id="all-clubs-title">Todos nuestros clubes</h2>
+        <div class="club-icon-grid">
+            {% for club in featured_clubs %}
+                <button class="mini-club js-mini-club" type="button" data-club="{{ club.name }}">
+                    <span class="mini-club__icon">{{ club.icon }}</span>
+                    <span>{{ club.name }}</span>
+                    <i class="dot dot--{{ club.color }}"></i>
+                </button>
+            {% endfor %}
+        </div>
+
+        <p class="all-clubs__message">Y muchos <strong>clubes más</strong> te esperan...</p>
+        <button class="outline-button js-open-clubs" type="button">Conocer todos los clubes <span aria-hidden="true">→</span></button>
+    </div>
+</section>

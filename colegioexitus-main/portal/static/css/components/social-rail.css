@@ -1,0 +1,40 @@
+.social-rail {
+    position: fixed;
+    z-index: 40;
+    top: 50%;
+    right: 17px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transform: translateY(-50%);
+}
+
+.social-rail a {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .94);
+    box-shadow: var(--shadow-sm);
+    transition: transform .2s ease;
+}
+
+.social-rail a:hover {
+    transform: translateX(-4px) scale(1.06);
+}
+
+.social-rail img {
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+}
+
+.social-rail__whatsapp {
+    background: #20c96b !important;
+}
+
+.social-rail__whatsapp img {
+    width: 23px;
+    height: 23px;
+}

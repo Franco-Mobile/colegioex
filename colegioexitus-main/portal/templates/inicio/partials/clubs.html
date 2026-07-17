@@ -1,0 +1,22 @@
+{% load static %}
+<section class="clubs" id="clubes" aria-labelledby="clubs-title">
+    <div class="social-rail" aria-label="Redes sociales">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="{% static 'img/redes-sociales/facebook24px.png' %}" alt=""></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="{% static 'img/redes-sociales/instagram24px.png' %}" alt=""></a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><img src="{% static 'img/redes-sociales/tiktok24px.png' %}" alt=""></a>
+        <a class="social-rail__whatsapp" href="https://wa.me/51900000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img src="{% static 'img/redes-sociales/whatsapp.png' %}" alt=""></a>
+    </div>
+
+    <div class="clubs__inner">
+        <header class="clubs-intro reveal">
+            <span class="section-kicker"><span aria-hidden="true">+</span> Clubes Exitu's</span>
+            <h2 id="clubs-title">Descubre tu <strong>pasión</strong></h2>
+            <p>En Exitu's College fomentamos el talento, la creatividad y el trabajo en equipo a través de nuestros clubes.</p>
+            <button class="text-button js-open-clubs" type="button">Ver todos los clubes <span aria-hidden="true">→</span></button>
+        </header>
+
+        {% for club in featured_clubs %}
+            {% include "inicio/partials/club_feature.html" with club=club only %}
+        {% endfor %}
+    </div>
+</section>
