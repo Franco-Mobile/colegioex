@@ -94,4 +94,16 @@
     </div>
     <!-- Botón CTA escritorio (fijo a la derecha) -->
     <a href="/#admision" class="cta cta-top-right" aria-label="Ir a Admisión">Admisión</a>
+
+    <!-- Filtro SVG para simular vidrio líquido con movimiento fluido orgánico -->
+    <svg class="svg-filters" style="position: absolute; width: 0; height: 0; pointer-events: none;" width="0" height="0">
+        <defs>
+            <filter id="liquid-glass-filter">
+                <feTurbulence type="fractalNoise" baseFrequency="0.015 0.02" numOctaves="3" result="noise">
+                    <animate attributeName="baseFrequency" dur="25s" values="0.015 0.02;0.022 0.04;0.015 0.02" repeatCount="indefinite" />
+                </feTurbulence>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
 </header>
